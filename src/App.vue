@@ -4,7 +4,7 @@
       <div class="deckWrap">
         <img v-if="deckIsEmpty" src="./assets/card-back.png" alt="card">
         <img v-else="" src="./assets/card-back-empty.png" alt="card">
-        <button class="shuffleTheDeck" @click="shuffleTheDeck(cardArr)">Shuffle the deck</button>
+        <button class="shuffleTheDeck" :disabled="!deckIsEmpty" @click="shuffleTheDeck(cardArr)">Shuffle the deck</button>
       </div>
       <div class="selectionPanel">
         <card-selector :card-array-length="cardArr.length"/>
@@ -118,5 +118,7 @@
   }
   .shuffleTheDeck {
     margin: 10px 0 0 0;
+  }.shuffleTheDeck:hover {
+    cursor: pointer;
   }
 </style>
