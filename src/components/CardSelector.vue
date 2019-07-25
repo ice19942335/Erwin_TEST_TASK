@@ -27,7 +27,7 @@
 
         <button :disabled="isCardSelected" @click="$parent.drawSelectedCard(selectedCard, selectedSuit)">Draw selected card</button>
         <br>
-        <button class="btnFromTop" :disabled="deckIsEmpty" @click="$parent.takeCardFromTopOfTheDeck()">Draw card from top</button>
+        <button class="btnFromTop" :disabled="isTheDeckEmpty" @click="$parent.takeCardFromTopOfTheDeck()">Draw card from top</button>
     </div>
 </template>
 
@@ -47,7 +47,7 @@
             isCardSelected() {
                 return this.selectedSuit === '' || this.selectedCard === '' || this.cardArrayLength === 0;
             },
-            deckIsEmpty() {
+            isTheDeckEmpty() {
                 return this.cardArrayLength === 0;
             }
         }
