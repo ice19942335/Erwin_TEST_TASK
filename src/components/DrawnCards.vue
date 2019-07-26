@@ -188,10 +188,7 @@
     background-position-y: -199px
 }
 .Spades-J {
-     background-position-y: -198px;
-}
-.Spades-J {
-    background-position-y: -6px;
+    background-position-y: -198px;
 }
 .Spades-8 {
     background-position-y: -200px;
@@ -243,7 +240,6 @@
 .Diamonds-J {
     background-position-y: -297px;
 }
-
 .Diamonds-8 {
     background-position-y: -299px;
 }
