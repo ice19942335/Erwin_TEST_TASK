@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button :disabled="sortBtnDisabled" @click="sortDrawnCards()" class="btnSortDrawnCards">Sort drawn cards</button>
+        <button :disabled="sortBtnDisabled" @click="sortInit()" class="btnSortDrawnCards">Sort drawn cards</button>
         <div class="drawnCards">
             <div class="drawnCardsWrap" v-for="(item, index) in drawnCards" :key="index">
                 <div class="cardItem" v-bind:class="[item.card.toString(), item.suit]">
@@ -45,9 +45,13 @@
             drawnCards: Array
         },
         methods: {
-            sortDrawnCards() {
-                this.drawnCards.sort(this.sortRule);
-                this.sortDrawnCardsByValue(this.drawnCards);
+            sortInit() {
+                this.drawnCards = this.sortBySuit(this.drawnCards, this.sortRule);
+                this.drawnCards = this.sortByValue(this.drawnCards);
+            },
+            sortBySuit(arr, sortRule) {
+                arr.sort(sortRule);
+                return arr;
             },
             sortRule(a, b) {
                 let aSuitLevel = this.sortSuitPriority[a.suit];
@@ -55,7 +59,7 @@
                 if (aSuitLevel > bSuitLevel) return 1;
                 if (aSuitLevel < bSuitLevel) return -1;
             },
-            sortDrawnCardsByValue(arr) {
+            sortByValue(arr) {
                 let flagToContinue = true;
 
                 //Code below will be a little hard to read, sorry but I did my best.
@@ -78,10 +82,11 @@
                             }
                         }
                     }
-                    if (counter === arr.length - 4) {
+                    if (counter >= arr.length - 4) {
                         flagToContinue = false;
                     }
                 }
+                return arr;
             }
         },
         computed: {
