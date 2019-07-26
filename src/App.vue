@@ -99,12 +99,14 @@
 
 <style>
   #app {
+    min-height: calc(100vh - 60px);
+    background: url("assets/back-green.jpg");
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    padding-top: 60px;
   }
   .center {
     display: flex;
@@ -119,6 +121,9 @@
     margin: 10px 0 10px 0;
   }.shuffleTheDeck:hover {
     cursor: pointer;
+  }
+  img {
+    border-radius: 7px;
   }
   @media (max-width: 550px) {
     .center {
