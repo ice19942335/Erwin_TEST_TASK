@@ -3,10 +3,8 @@
         <button :disabled="sortBtnDisabled" @click="sortInit()" class="btnSortDrawnCards">Sort drawn cards</button>
         <div class="drawnCards">
             <div class="drawnCardsWrap" v-for="(item, index) in drawnCards" :key="index">
-                <div
-                        class="cardItem"
-                        v-bind:class="['card-' + item.card.toString(), item.suit, `${item.suit}-${item.card.toString()}`]">
-
+                <div class="cardItem"
+                     v-bind:class="['card-' + item.card.toString(), item.suit, `${item.suit}-${item.card.toString()}`]">
                 </div>
             </div>
         </div>
