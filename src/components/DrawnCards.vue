@@ -3,7 +3,11 @@
         <button :disabled="sortBtnDisabled" @click="sortInit()" class="btnSortDrawnCards">Sort drawn cards</button>
         <div class="drawnCards">
             <div class="drawnCardsWrap" v-for="(item, index) in drawnCards" :key="index">
-                <div class="cardItem" v-bind:class="['card-' + item.card.toString(), item.suit]"></div>
+                <div
+                        class="cardItem"
+                        v-bind:class="['card-' + item.card.toString(), item.suit, `${item.suit}-${item.card.toString()}`]">
+
+                </div>
             </div>
         </div>
     </div>
@@ -103,9 +107,10 @@
 }
 .cardItem {
     width: 54px;
-    height: 84px;
+    height: 81px;
     background: url("../assets/card-deck.png") no-repeat;
     margin: 10px 5px 0 5px;
+    border-radius: 10px;
 }
 .btnSortDrawnCards {
     height: 50px;
@@ -127,7 +132,7 @@
 }
 .card-4 {
     background-position-x: -210px;
-    background-position-y: -6px;
+    background-position-y: -7px;
 }
 .card-5 {
     background-position-x: -275px;
@@ -135,15 +140,15 @@
 }
 .card-6 {
     background-position-x: -340px;
-    background-position-y: -5px;
+    background-position-y: -6px;
 }
 .card-7 {
     background-position-x: -407px;
-    background-position-y: -6px;
+    background-position-y: -7px;
 }
 .card-8 {
     background-position-x: -470px;
-    background-position-y: -7px;
+    background-position-y: -8px;
 }
 .card-9 {
     background-position-x: -536px;
@@ -177,6 +182,85 @@
 }
 .Diamonds {
     background-position-y: -296px;
+}
+
+.Spades-Q {
+    background-position-y: -199px
+}
+.Spades-J {
+     background-position-y: -198px;
+}
+.Spades-J {
+    background-position-y: -6px;
+}
+.Spades-8 {
+    background-position-y: -200px;
+}
+.Spades-7 {
+    background-position-y: -199px;
+}
+.Spades-6 {
+    background-position-y: -198px;
+}
+.Spades-5 {
+    background-position-y: -198px;
+}
+.Spades-4 {
+    background-position-y: -199px;
+}
+.Spades-3 {
+    background-position-y: -198px;
+}
+
+.Hearts-Q {
+    background-position-y: -106px;
+}
+.Hearts-J {
+    background-position-y: -105px;
+}
+.Hearts-8 {
+    background-position-y: -107px
+}
+.Hearts-7 {
+    background-position-y: -106px;
+}
+.Hearts-6 {
+    background-position-y: -105px;
+}
+.Hearts-5 {
+    background-position-y: -105px;
+}
+.Hearts-4 {
+    background-position-y: -106px;
+}
+.Hearts-3 {
+    background-position-y: -105px;
+}
+
+.Diamonds-Q {
+    background-position-y: -298px;
+}
+.Diamonds-J {
+    background-position-y: -297px;
+}
+
+.Diamonds-8 {
+    background-position-y: -299px;
+}
+.Diamonds-7 {
+    background-position-y: -298px;
+}
+.Diamonds-6 {
+    background-position-y: -297px;
+}
+.Diamonds-5 {
+    background-position-y: -297px;
+}
+.Diamonds-4 {
+    background-position-y: -298px;
+}
+.Diamonds-3 {
+    background-position-y: -297px;
 }
 
 </style>
