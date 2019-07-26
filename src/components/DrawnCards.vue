@@ -179,5 +179,4 @@
     background-position-y: -296px;
 }
 
-
 </style>

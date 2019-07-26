@@ -6,9 +6,7 @@
         <img v-else="" src="./assets/card-back-empty.png" alt="card">
         <button class="shuffleTheDeck" :disabled="!deckIsEmpty" @click="shuffleTheDeck(cardArr)">Shuffle the deck</button>
       </div>
-      <div class="selectionPanel">
-        <card-selector :card-array-length="cardArr.length"/>
-      </div>
+      <card-selector :card-array-length="cardArr.length"/>
     </div>
     <drawn-cards :drawn-cards="drawnCards"/>
   </div>
@@ -115,10 +113,16 @@
   .deckWrap {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .shuffleTheDeck {
-    margin: 10px 0 0 0;
+    margin: 10px 0 10px 0;
   }.shuffleTheDeck:hover {
     cursor: pointer;
+  }
+  @media (max-width: 550px) {
+    .center {
+      flex-direction: column;
+    }
   }
 </style>

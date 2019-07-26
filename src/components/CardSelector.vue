@@ -1,5 +1,5 @@
 <template>
-    <div class="controlPanel">
+    <div class="cardSelectionPanel">
         <select class="selectedSuitDropDown" v-model="selectedCard">
             <option value="" disabled hidden>Selected card</option>
             <option value="A">Ace</option>
@@ -27,7 +27,7 @@
 
         <button :disabled="isCardSelected" @click="$parent.drawSelectedCard(selectedCard, selectedSuit)">Draw selected card</button>
         <br>
-        <button class="btnFromTop" :disabled="isTheDeckEmpty" @click="$parent.takeCardFromTopOfTheDeck()">Draw card from top</button>
+        <button class="btnTakeFromTop" :disabled="isTheDeckEmpty" @click="$parent.takeCardFromTopOfTheDeck()">Draw card from top</button>
     </div>
 </template>
 
@@ -56,7 +56,21 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.btnFromTop {
-    margin: 20px 0 0 0;
+.btnTakeFromTop {
+    margin: 10px 0 10px 0;
+}
+
+@media (max-width: 550px) {
+    .cardSelectionPanel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cardSelectionPanel select, button {
+        width: 50%;
+    }
+    .btnTakeFromTop {
+        margin: 0px 0 10px 0;
+    }
 }
 </style>
