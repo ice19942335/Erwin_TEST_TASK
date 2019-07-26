@@ -1,7 +1,6 @@
 # erwin_technical_challenge
 
-### This was my first experience with Unit tests<br>this simple task take me about 12 hours to complete it. I will going to complete user interface on this project anyway, so it will take another 2-3 hours.
-
+### This was my first experience with Unit tests<br>this simple task take me about 12 hours to complete it.
 ### You might will need this if you have problems on "build"
 ```
 npm i terser-webpack-plugin
