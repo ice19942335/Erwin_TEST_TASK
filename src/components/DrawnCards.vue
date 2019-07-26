@@ -3,10 +3,7 @@
         <button :disabled="sortBtnDisabled" @click="sortInit()" class="btnSortDrawnCards">Sort drawn cards</button>
         <div class="drawnCards">
             <div class="drawnCardsWrap" v-for="(item, index) in drawnCards" :key="index">
-                <div class="cardItem" v-bind:class="[item.card.toString(), item.suit]">
-                    Card: {{ item.card }}<br>
-                    Suit: {{ item.suit }}
-                </div>
+                <div class="cardItem" v-bind:class="['card-' + item.card.toString(), item.suit]"></div>
             </div>
         </div>
     </div>
@@ -105,7 +102,9 @@
     flex-wrap: wrap;
 }
 .cardItem {
-    border: gray solid 1px;
+    width: 54px;
+    height: 84px;
+    background: url("../assets/card-deck.png") no-repeat;
     margin: 10px 5px 0 5px;
 }
 .btnSortDrawnCards {
@@ -114,4 +113,71 @@
 .btnSortDrawnCards:hover {
     cursor: pointer;
 }
+.card-A {
+    background-position-x: -15px;
+    background-position-y: -5px;
+}
+.card-2 {
+    background-position-x: -80px;
+    background-position-y: -5px;
+}
+.card-3 {
+    background-position-x: -147px;
+    background-position-y: -6px;
+}
+.card-4 {
+    background-position-x: -210px;
+    background-position-y: -6px;
+}
+.card-5 {
+    background-position-x: -275px;
+    background-position-y: -6px;
+}
+.card-6 {
+    background-position-x: -340px;
+    background-position-y: -5px;
+}
+.card-7 {
+    background-position-x: -407px;
+    background-position-y: -6px;
+}
+.card-8 {
+    background-position-x: -470px;
+    background-position-y: -7px;
+}
+.card-9 {
+    background-position-x: -536px;
+    background-position-y: -5px;
+}
+.card-10 {
+    background-position-x: -601px;
+    background-position-y: -5px;
+}
+.card-J {
+    background-position-x: -668px;
+    background-position-y: -6px;
+}
+.card-Q {
+    background-position-x: -731px;
+    background-position-y: -7px;
+}
+.card-K {
+    background-position-x: -797px;
+    background-position-y: -5px;
+}
+
+.Clubls {
+    background-position-y: -5px;
+}
+.Spades {
+    background-position-y: -197px;
+}
+.Hearts {
+    background-position-y: -104px;
+}
+.Diamonds {
+    background-position-y: -296px;
+}
+
+
 </style>
