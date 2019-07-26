@@ -5,6 +5,11 @@
 npm install
 ```
 
+### There should't be any problems, but on my PC I have to install this first to use scripts like ('serve', 'build')
+```
+npm i terser-webpack-plugin
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve

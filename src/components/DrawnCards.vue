@@ -62,8 +62,7 @@
             sortByValue(arr, sortCardPriority) {
                 let flagToContinue = true;
 
-                //Code below will be a little hard to read, sorry but I did my best.
-                //Looping until no one element will be swapped - this is the trigger to stop the loop
+                // I could use array methods like (sort, concat, filter) but this idea came to me first.
                 while (flagToContinue) {
                     let counter = 0;
                     for (let i = 0; i < arr.length - 1; i++) {
