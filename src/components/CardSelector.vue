@@ -16,7 +16,7 @@
             <option value="3">3</option>
             <option value="2">2</option>
         </select>
-
+        <br>
         <select class="selectedCard" v-model="selectedSuit">
             <option value="" disabled hidden>Select card suit</option>
             <option value="Diamonds">Diamonds</option>
@@ -24,7 +24,7 @@
             <option value="Spades">Spades</option>
             <option value="Clubs">Clubs</option>
         </select>
-
+        <br>
         <button :disabled="isCardSelected" @click="$parent.drawSelectedCard(selectedCard, selectedSuit)">Draw selected card</button>
         <br>
         <button class="btnTakeFromTop" :disabled="isTheDeckEmpty" @click="$parent.takeCardFromTopOfTheDeck()">Draw card from top</button>
@@ -57,9 +57,30 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .btnTakeFromTop {
-    margin: 10px 0 10px 0;
+    margin: 30px 0 10px 0;
 }
-
+select, button {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    padding: 0 5px;
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    outline: none;
+}
+select {
+    margin: 0 0 5px 0;
+    background: green;
+    border-radius: 8px;
+    border: none;
+}
+button {
+    border: none;
+    border-radius: 8px;
+}
+button:hover {
+    background: white;
+}
 @media (max-width: 550px) {
     .cardSelectionPanel {
         display: flex;

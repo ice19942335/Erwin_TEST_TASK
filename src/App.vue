@@ -8,7 +8,7 @@
       </div>
       <card-selector :card-array-length="cardArr.length"/>
     </div>
-    <drawn-cards :drawn-cards="drawnCards"/>
+    <drawn-cards :drawn-cards-props="drawnCardsProps"/>
   </div>
 </template>
 
@@ -25,7 +25,7 @@
     data: function() {
       return {
         cardArr: [],
-        drawnCards: [],
+        drawnCardsProps: [],
         suitMap: {
           Diamonds: 'Diamonds',
           Hearts: 'Hearts',
@@ -59,7 +59,7 @@
 
         if (find !== undefined) {
           this.cardArr = this.removeCardFromCardArr(findIndex, this.cardArr);
-          this.putCardToTheDrawnCardsList({card, suit}, this.drawnCards);
+          this.putCardToTheDrawnCardsList({card, suit}, this.drawnCardsProps);
         } else {
           alert('There is no such card in the deck');
         }
@@ -68,7 +68,7 @@
         if (this.cardArr.length > 0) {
           let lastCard = this.cardArr[this.cardArr.length - 1];
           this.cardArr = this.removeCardFromCardArr(this.cardArr.length - 1, this.cardArr);
-          this.putCardToTheDrawnCardsList({card: lastCard.card, suit: lastCard.suit}, this.drawnCards);
+          this.putCardToTheDrawnCardsList({card: lastCard.card, suit: lastCard.suit}, this.drawnCardsProps);
         } else {
           alert('There is no more cards in the deck')
         }
@@ -110,12 +110,13 @@
   }
   .center {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
   }
   .deckWrap {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 30px 0 0;
   }
   .shuffleTheDeck {
     margin: 10px 0 10px 0;
@@ -125,9 +126,30 @@
   img {
     border-radius: 7px;
   }
+
+  button {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    padding: 0 5px;
+    width: 100%;
+    height: 25px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+  }
+  button:hover {
+    background: white;
+  }
   @media (max-width: 550px) {
     .center {
       flex-direction: column;
+    }
+    button {
+      width: 50%;
+    }
+    .deckWrap {
+      margin: 0 0 0 0;
     }
   }
 </style>

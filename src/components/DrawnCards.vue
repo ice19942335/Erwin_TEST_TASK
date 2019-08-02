@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <button :disabled="sortBtnDisabled" @click="sortInit()" class="btnSortDrawnCards">Sort drawn cards</button>
+    <div class="drawnCardsWrap">
+        <button :disabled="sortBtnDisabled" @click="sortDeck()" class="btnSortDrawnCards">Sort drawn cards</button>
         <div class="drawnCards">
-            <div class="drawnCardsWrap" v-for="(item, index) in drawnCards" :key="index">
+            <div class="drawnCardsWrap" v-for="(item, index) in deck" :key="index">
                 <div class="cardItem"
                      v-bind:class="['card-' + item.card.toString(), item.suit, `${item.suit}-${item.card.toString()}`]">
                 </div>
@@ -17,13 +17,7 @@
         name: 'ControlPanel',
         data: function() {
             return {
-                sortSuitPriority: {
-                    Clubs: 1,
-                    Spades: 2,
-                    Hearts: 3,
-                    Diamonds: 4
-                },
-                sortCardPriority: {
+                sortValuePriority: {
                     A: 13,
                     K: 12,
                     Q: 11,
@@ -37,59 +31,37 @@
                     4: 3,
                     3: 2,
                     2: 1
-                }
+                },
+                deck: this.drawnCardsProps
             }
         },
         props: {
-            drawnCards: Array
+            drawnCardsProps: Array
         },
         methods: {
-            sortInit() {
-                this.drawnCards = this.sortBySuit(this.drawnCards, this.sortRule);
-                this.drawnCards = this.sortByValue(this.drawnCards, this.sortCardPriority);
+            sortDeck() {
+                let clubs = this.deck.filter(card => card.suit === 'Clubs').sort(this.sortRule);
+                let spades = this.deck.filter(card => card.suit === 'Spades').sort(this.sortRule);
+                let hearts = this.deck.filter(card => card.suit === 'Hearts').sort(this.sortRule);
+                let diamonds = this.deck.filter(card => card.suit === 'Diamonds').sort(this.sortRule);
+
+                console.dir(clubs);
+                console.dir(spades);
+                console.dir(hearts);
+                console.dir(diamonds);
+
+                this.deck = clubs.concat(spades.concat(hearts.concat(diamonds)));
             },
-            sortBySuit(arr, sortRule) {
-                arr.sort(sortRule);
-                return arr;
-            },
-            sortRule(a, b, sortSuitPriority = this.sortSuitPriority) {
-                let aSuitLevel = sortSuitPriority[a.suit];
-                let bSuitLevel = sortSuitPriority[b.suit];
+            sortRule(a, b, sortValuePriority = this.sortValuePriority) {
+                let aSuitLevel = sortValuePriority[a.card];
+                let bSuitLevel = sortValuePriority[b.card];
                 if (aSuitLevel > bSuitLevel) return 1;
                 if (aSuitLevel < bSuitLevel) return -1;
-            },
-            sortByValue(arr, sortCardPriority) {
-                let flagToContinue = true;
-
-                // I could use array methods like (sort, concat, filter) but this idea came to me first.
-                while (flagToContinue) {
-                    let counter = 0;
-                    for (let i = 0; i < arr.length - 1; i++) {
-                        let curEl = arr[i];
-                        let nextEl = arr[i + 1];
-
-                        let curElCardLevel = sortCardPriority[curEl.card];
-                        let nextElCardLevel = sortCardPriority[nextEl.card];
-
-                        if (curEl.suit === nextEl.suit) {
-                            if (curElCardLevel < nextElCardLevel) {
-                                arr[i] = nextEl;
-                                arr[i + 1] = curEl;
-                            } else {
-                                counter++;
-                            }
-                        }
-                    }
-                    if (counter >= arr.length - 4) {
-                        flagToContinue = false;
-                    }
-                }
-                return arr;
             }
         },
         computed: {
             sortBtnDisabled() {
-                return this.drawnCards.length <= 1;
+                return this.drawnCardsProps.length <= 1;
             }
         }
     }
@@ -97,6 +69,23 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.drawnCardsWrap {
+     margin: 30px 0 0 0;
+}
+button {
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    padding: 0 5px;
+    width: 150px;
+    height: 25px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+}
+button:hover {
+    background: white;
+}
 .drawnCards {
     margin: 15px 0 0 0;
     display: flex;
@@ -104,6 +93,7 @@
     flex-wrap: wrap;
 }
 .cardItem {
+    box-shadow: 0.3em 0.3em 3px rgba(14, 14, 14, 0.78);
     width: 54px;
     height: 81px;
     background: url("../assets/card-deck.png") no-repeat;
