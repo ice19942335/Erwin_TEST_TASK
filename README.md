@@ -1,6 +1,6 @@
 # erwin_technical_challenge
 
-### This was my first experience with Unit tests<br>this simple task take me about 12 hours to complete it.
+### This was my first experience with Unit tests<br>this simple task took me about 12 hours to complete it.
 ### You might will need this if you have problems on "build"
 ```
 npm i terser-webpack-plugin
